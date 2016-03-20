@@ -2,19 +2,11 @@ FROM tomcat:8-jre8
 
 MAINTAINER Mitsumasa Sugimoto <sugimoto@mashbrains.jp>
 
-ENV CATALINA_HOME /usr/local/tomcat
-ENV PATH $CATALINA_HOME/bin:$PATH
-ENV CATALINA_OPTS="-Xmx1024m -server"
-WORKDIR $CATALINA_HOME
+ENV CATALINA_OPTS="-Xmx2048m -server"
 
-EXPOSE 8080
-
-RUN echo $CATALINA_HOME
-
-RUN wget https://github.com/OpenRock/OpenAM/releases/download/13.0.0/OpenAM-13.0.0.zip && \
-unzip *.zip && \
-mv openam/*.war $CATALINA_HOME/webapps/openam.war && \
-rm *.zip
+RUN curl -#fL "https://github.com/OpenRock/OpenAM/releases/download/13.0.0/OpenAM-13.0.0.war" -o openam.war && \
+mv openam.war $CATALINA_HOME/webapps/openam.war && \
+rm openam.war
 
 ADD run-openam.sh /tmp/run-openam.sh
 

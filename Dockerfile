@@ -11,7 +11,7 @@ EXPOSE 8080
 
 RUN wget https://github.com/OpenRock/OpenAM/releases/download/13.0.0/OpenAM-13.0.0.zip && \
 unzip *.zip && \
-mv openam/*.war $CATALINA_HOME/webapps/openam.war && \
+mv openam/*.war webapps/openam.war && \
 rm *.zip
 
 ADD run-openam.sh /tmp/run-openam.sh

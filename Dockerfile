@@ -10,9 +10,9 @@ WORKDIR $CATALINA_HOME
 EXPOSE 8080
 
 RUN wget https://github.com/OpenRock/OpenAM/releases/download/13.0.0/OpenAM-13.0.0.zip && \
-    unzip *.zip && \
-    mv *.war $CATALINA_HOME/webapps/openam.war && \
-    rm *.zip
+unzip *.zip && \
+mv opanam/*.war $CATALINA_HOME/webapps/openam.war && \
+rm *.zip
 
 ADD run-openam.sh /tmp/run-openam.sh
 

@@ -4,9 +4,8 @@ MAINTAINER Mitsumasa Sugimoto <sugimoto@mashbrains.jp>
 
 ENV CATALINA_OPTS="-Xmx2048m -server"
 
-RUN curl -#fL "https://github.com/OpenRock/OpenAM/releases/download/13.0.0/OpenAM-13.0.0.war" -o openam.war && \
-cp openam.war $CATALINA_HOME/webapps/openam.war && \
-rm openam.war
+RUN curl "http://maven.forgerock.org/repo/releases/org/forgerock/openam/openam-server/13.0.0/openam-server-13.0.0.war" -o openam.war && \
+mc openam.war $CATALINA_HOME/webapps/openam.war 
 
 ADD run-openam.sh /tmp/run-openam.sh
 

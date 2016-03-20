@@ -9,4 +9,6 @@ mv openam.war $CATALINA_HOME/webapps/openam.war
 
 ADD run-openam.sh /tmp/run-openam.sh
 
+RUN chmod +x /tmp/run-openam.sh
+
 CMD ["/tmp/run-openam.sh"]
